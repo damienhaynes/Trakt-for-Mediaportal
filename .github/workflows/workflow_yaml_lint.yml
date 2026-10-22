@@ -1,0 +1,23 @@
+name: Workflow / YAML lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.yaml"
+      - "**.yml"
+  pull_request:
+    paths:
+      - "**.yaml"
+      - "**.yml"
+  workflow_dispatch:
+
+jobs:
+  yamllint:
+    name: 🧹 Yaml lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out configuration from GitHub
+        uses: actions/checkout@v7
+      - name: 🚀 Run yamllint
+        run: yamllint --strict .

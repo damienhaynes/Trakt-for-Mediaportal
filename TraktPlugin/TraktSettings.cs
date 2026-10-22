@@ -8,12 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using TraktAPI.DataStructures;
+using TraktAPI.DataModels;
 using TraktAPI.Enums;
 using TraktAPI.Extensions;
 using TraktPlugin.Extensions;
 using TraktPlugin.GUI;
-using TraktPlugin.TmdbAPI.DataStructures;
+using TraktPlugin.TmdbAPI.DataModels;
 
 namespace TraktPlugin
 {

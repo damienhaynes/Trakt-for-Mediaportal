@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TraktPlugin</RootNamespace>
     <AssemblyName>TraktPlugin</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -22,7 +22,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release12|AnyCPU'">
     <OutputPath>bin\Release12\</OutputPath>
@@ -229,6 +229,7 @@
     <Compile Include="GUI\GUICreditsMovie.cs" />
     <Compile Include="GUI\GUICreditsShow.cs" />
     <Compile Include="GUI\GUIAnticipatedShows.cs" />
+    <Compile Include="GUI\GUIFavoritedShows.cs" />
     <Compile Include="GUI\GUIListsMenu.cs" />
     <Compile Include="GUI\GUICommon.cs" />
     <Compile Include="GUI\GUIDialogMultiSelect.cs" />
@@ -271,7 +272,9 @@
     <Compile Include="GUI\GUIShowSeasons.cs" />
     <Compile Include="GUI\GUIRecentWatchedEpisodes.cs" />
     <Compile Include="GUI\GUIRecentWatchedMovies.cs" />
+    <Compile Include="GUI\GUIFavoritedMovies.cs" />
     <Compile Include="GUI\GUITVMenu.cs" />
+    <Compile Include="GUI\GUIUserFavoriteShows.cs" />
     <Compile Include="GUI\GUIUserProfile.cs" />
     <Compile Include="GUI\GUIWatchListEpisodes.cs" />
     <Compile Include="GUI\GUIRecommendationsMovies.cs" />
@@ -284,22 +287,24 @@
     <Compile Include="GUI\GUICalendarTV.cs" />
     <Compile Include="GUI\GUIExtensions.cs" />
     <Compile Include="GUI\GUIImageHandler.cs" />
+    <Compile Include="GUI\GUIUserFavoriteMovies.cs" />
     <Compile Include="GUI\GUIWatchListMovies.cs" />
     <Compile Include="GUI\GUIWatchListShows.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbConfiguration.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbEpisodeImages.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbImage.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbMovieImages.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbPersonImages.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbRequestAge.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbSeasonImages.cs" />
-    <Compile Include="TmdbAPI\DataStructures\TmdbShowImages.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbConfiguration.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbEpisodeImages.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbImage.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbMovieImages.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbPersonImages.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbRequestAge.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbSeasonImages.cs" />
+    <Compile Include="TmdbAPI\DataModels\TmdbShowImages.cs" />
     <Compile Include="TmdbAPI\Extensions\JsonExtensions.cs" />
     <Compile Include="TmdbAPI\TmdbAPI.cs" />
     <Compile Include="TmdbAPI\TmdbURIs.cs" />
     <Compile Include="Cache\TraktCache.cs" />
+    <Compile Include="TraktCredentials.cs" />
     <Compile Include="TraktDashboard.cs" />
     <Compile Include="TraktGenres.cs" />
     <Compile Include="TraktHandlers\ArgusRecordings.cs" />
@@ -703,7 +708,6 @@
     <Content Include="Resources\Skins\Titan\Themes\Extended Two\BasicHome.Trakt.xml" />
     <Content Include="Resources\Skins\Titan\Themes\Extended Two\Media\BasicHomeImages\Trakt.png" />
     <Content Include="Resources\Skins\Titan\Themes\Extended Two\Trakt.SkinSettings.xml" />
-    <Content Include="Resources\Skins\Titan\Trakt.AccountDialog.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Calendar.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Common.Background.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Common.Episodes.xml" />
@@ -714,6 +718,8 @@
     <Content Include="Resources\Skins\Titan\Trakt.Common.Users.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Common.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Dashboard.xml" />
+    <Content Include="Resources\Skins\Titan\Trakt.Favorited.Movies.xml" />
+    <Content Include="Resources\Skins\Titan\Trakt.Favorited.Shows.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.List.Items.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Lists.Menu.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Lists.xml" />
@@ -743,7 +749,7 @@
     <Content Include="Resources\Skins\Titan\Trakt.Search.Users.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Search.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Season.Episodes.xml" />
-    <Content Include="Resources\Skins\Titan\Trakt.Settings.Account.xml" />
+    <Content Include="Resources\Skins\Titan\Trakt.Settings.AccountAuth.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Settings.General.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Settings.Plugins.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Settings.xml" />
@@ -754,6 +760,8 @@
     <Content Include="Resources\Skins\Titan\Trakt.Trending.Shows.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.Trending.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.TV.Menu.xml" />
+    <Content Include="Resources\Skins\Titan\Trakt.UserFavorite.Movies.xml" />
+    <Content Include="Resources\Skins\Titan\Trakt.UserFavorite.Shows.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.UserProfile.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.WatchList.Episodes.xml" />
     <Content Include="Resources\Skins\Titan\Trakt.WatchList.Movies.xml" />

@@ -411,8 +411,7 @@
           <textYOff>16</textYOff>
           <label>-</label>
           <onright>50</onright>
-          <ondown>8</ondown>
-          <onup>8</onup>
+          <onup>10</onup>
         </control>
         <control>
           <description>Sort</description>
@@ -429,8 +428,6 @@
           <offsetSortButtonY>27</offsetSortButtonY>
           <onright>50</onright>
           <onleft>50</onleft>
-          <ondown>10</ondown>
-          <onup>2</onup>
         </control>
         <control>
           <description>Hide Watchlisted</description>
@@ -442,7 +439,6 @@
           <textureNoFocus>-</textureNoFocus>
           <textcolorNoFocus>ff393939</textcolorNoFocus>
           <label>#Trakt.Translation.HideWatchlisted.Label</label>
-          <onup>9</onup>
           <ondown>2</ondown>
           <onright>50</onright>
           <onleft>50</onleft>

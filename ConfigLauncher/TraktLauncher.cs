@@ -3,19 +3,19 @@ using System;
 
 namespace ConfigLauncher
 {
-    public class TraktLauncher : PluginConfigLauncher
+  public class TraktLauncher : PluginConfigLauncher
+  {
+    public override string FriendlyPluginName
     {
-        public override string FriendlyPluginName
-        {
-            get { return "Trakt"; }
-        }
-
-        public override void Launch(string[] args)
-        {
-            ConfigConnector plugin = new ConfigConnector();
-            plugin.ShowPlugin(args);
-        }
+      get { return "Trakt"; }
     }
+
+    public override void Launch( string[] args )
+    {
+      ConfigConnector plugin = new ConfigConnector();
+      plugin.ShowPlugin( args );
+    }
+  }
 }
 
 

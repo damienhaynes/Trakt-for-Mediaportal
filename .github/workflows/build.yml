@@ -1,0 +1,331 @@
+name: Build / Trakt Plugin
+
+on:
+  push:
+    # On Push to Master branch
+    branches:
+      - master
+    # Ignore all Tags / Release
+    tags-ignore:
+      - '**'
+
+  workflow_call:
+    inputs:
+      retention-build:
+        description: "Retention Period for Setup files. Default is 90"
+        default: 90
+        required: false
+        type: number
+    outputs:
+      version:
+        description: "MPE1 Version"
+        value: ${{ jobs.mpe.outputs.version }}
+
+jobs:
+  build:
+    name: Trakt / Build
+    runs-on: windows-2022
+    steps:
+      - name: Setup Visual Studio 2022
+        uses: microsoft/setup-msbuild@v3
+        with:
+          vs-version: 16.11
+
+      - name: Git Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Git Checkout / MPE / XPath
+        uses: actions/checkout@v7
+        with:
+          repository: Mediaportal-Plugin-Team/Mediaportal-Tools
+          path: Tools
+
+      - name: Build (x86)
+        run: |
+          build.cmd x86 < nul
+        working-directory: ${{ github.workspace }}\build
+        shell: cmd
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Build (x64)
+        run: |
+          build.cmd x64 < nul
+        working-directory: ${{ github.workspace }}\build
+        shell: cmd
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Upload Artifact / Plugin
+        uses: actions/upload-artifact@v7
+        if: ${{ success() }}
+        with:
+          name: TraktPlugin
+          path: |
+            ${{ github.workspace }}\TraktPlugin\bin\Release\TraktPlugin.dll
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+      - name: Save cache
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ github.workspace }}
+          key: plugin
+
+  changes:
+    name: XMP2 / Changed
+    runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.changes.outputs.xmp }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: changes
+        with:
+          filters: |
+            xmp:
+              - '**.xmp2'
+
+  codeql:
+    name: CodeQL
+    if: ${{ needs.changes.outputs.changes == 'true' }}
+    uses: Mediaportal-Plugin-Team/Mediaportal-Tools/.github/workflows/codeql.yml@master
+    needs:
+      - build
+      - changes
+    permissions:
+      security-events: write
+    secrets: inherit
+
+  mpe:
+    name: Trakt / MPE
+    runs-on: windows-2022
+    needs:
+      - build
+      - changes
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      changes: ${{ needs.changes.outputs.changes }}
+    steps:
+      - name: Restore cache
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ github.workspace }}
+          key: plugin
+
+      - name: Git Checkout / MPE / XPath
+        uses: actions/checkout@v7
+        with:
+          repository: Mediaportal-Plugin-Team/Mediaportal-Tools
+          path: Tools
+
+      - name: MP folder for MPEMaker
+        run: |
+          mkdir "C:\Team MediaPortal"
+        shell: cmd
+
+      - name: Link to MPEMaker
+        run: |
+          mklink /J "C:\Team MediaPortal\MediaPortal" "${{ github.workspace }}\Tools\MPEMaker"
+        shell: cmd
+
+      - name: Get MPE1 Version
+        id: version
+        run: |
+          FOR /F "tokens=*" %%i IN ('..\Tools\Tools\sigcheck.exe -accepteula -nobanner -n "..\TraktPlugin\bin\Release\TraktPlugin.dll"') DO (ECHO version=%%i >> %GITHUB_OUTPUT%)
+        working-directory: ${{ github.workspace }}\build
+        shell: cmd
+
+      - name: Update Known Extensions
+        run: |
+          MPEUpdater.exe
+        working-directory: ${{ github.workspace }}\Tools\MPEMaker
+        shell: cmd
+
+      - name: Build MPE1
+        run: |
+          installer.cmd
+        working-directory: ${{ github.workspace }}\build
+        shell: cmd
+
+      - name: Upload Artifact / MPE1
+        uses: actions/upload-artifact@v7
+        if: ${{ success() }}
+        with:
+          name: TraktPlugin MPE1
+          path: |
+            ${{ github.workspace }}\MPEI\Release\TraktPlugin*.mpe1
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+      - name: Upload Artifact / MPE XML
+        uses: actions/upload-artifact@v7
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
+        with:
+          name: TraktPlugin XML
+          path: |
+            ${{ github.workspace }}\MPEI\update.xml
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+      - name: Get Release Version Description
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
+        run: |
+          call ..\Tools\XPath\xpath.cmd "update.xml" "//Items/PackageClass/GeneralInfo/VersionDescription" last > description.txt
+        working-directory: ${{ github.workspace }}\MPEI
+        shell: cmd
+
+      - name: Add Badges to Release Version Description
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
+        run: |
+          ECHO. >> description.txt
+          ECHO [![Downloads](https://img.shields.io/github/downloads/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/v${{steps.version.outputs.version}}/total)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/releases/tag/v${{steps.version.outputs.version}}) [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md) >> description.txt
+        working-directory: ${{ github.workspace }}\MPEI
+        shell: cmd
+
+      - name: Clean Release Version Description
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
+        run: |
+          ..\Tools\Tools\sed.exe -i "s/ \//\//g" description.txt
+        working-directory: ${{ github.workspace }}\MPEI
+        shell: cmd
+
+      - name: Upload Artifact / Version Description
+        uses: actions/upload-artifact@v7
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
+        with:
+          name: TraktPlugin Version Description
+          path: |
+            ${{ github.workspace }}\MPEI\description.txt
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+  xml:
+    name: Trakt / XML
+    runs-on: ubuntu-latest
+    if: ${{ needs.mpe.outputs.changes == 'true' }}
+    needs:
+      - mpe
+    permissions:
+      contents: write
+    outputs:
+      changes: ${{ needs.mpe.outputs.changes }}
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: TraktPlugin XML
+          path: ${{ github.workspace }}/MPEI/
+
+      - name: Update / MPE1 XML
+        uses: EndBug/add-and-commit@v11
+        with:
+          message: 'Trakt Plugin ${{needs.mpe.outputs.version}} / Release'
+          add: '${{ github.workspace }}/MPEI/update.xml'
+
+      - name: Delete XML Artifact
+        uses: geekyeggo/delete-artifact@v6
+        with:
+          name: TraktPlugin XML
+          failOnError: false
+
+  release:
+    name: Trakt / Release
+    if: ${{ needs.mpe.outputs.changes == 'true' }}
+    needs:
+      - mpe
+      - xml
+    permissions:
+      contents: write
+    outputs:
+      changes: ${{ needs.mpe.outputs.changes }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: TraktPlugin MPE1
+          path: release-files
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: TraktPlugin Version Description
+          path: release-description
+
+      - name: Check Artifacts
+        run: |
+          ls -l
+        working-directory: release-files
+
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: Trakt v${{needs.mpe.outputs.version}}
+          tag_name: v${{needs.mpe.outputs.version}}
+          body_path: release-description/description.txt
+          generate_release_notes: true
+          files: |
+            release-files/*.mpe1
+
+      - name: Delete MPE1 Artifact
+        uses: geekyeggo/delete-artifact@v6
+        with:
+          name: TraktPlugin MPE1
+          failOnError: false
+
+      - name: Delete Version Description Artifact
+        uses: geekyeggo/delete-artifact@v6
+        with:
+          name: TraktPlugin Version Description
+          failOnError: false
+
+  ci-status:
+    name: Build Status
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - mpe
+    if: always()
+    steps:
+      - name: Success
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Failure
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+
+  release-status:
+    name: Release Status
+    if: ${{ needs.release.outputs.changes == 'true' }}
+    runs-on: ubuntu-latest
+    needs:
+      - release
+    steps:
+      - name: Success
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Failure
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+
+  cache-clear:
+    name: Clear cache
+    runs-on: ubuntu-latest
+    needs:
+      - mpe
+    if: always()
+    steps:
+      - name: Clear cache
+        uses: easimon/wipe-cache@main

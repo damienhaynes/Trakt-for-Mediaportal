@@ -2,29 +2,29 @@
 
 namespace TraktPlugin.GUI
 {
-    public class GUISettings : GUIWindow
+  public class GUISettings : GUIWindow
+  {
+    #region Constructor
+
+    public GUISettings() { }
+
+    #endregion
+
+    #region Base Overrides
+
+    public override int GetID
     {
-        #region Constructor
-
-        public GUISettings() { }
-
-        #endregion
-
-        #region Base Overrides
-
-        public override int GetID
-        {
-            get
-            {
-                return 87271;
-            }
-        }
-
-        public override bool Init()
-        {
-            return Load(GUIGraphicsContext.Skin + @"\Trakt.Settings.xml");
-        }
-
-        #endregion
+      get
+      {
+        return 87271;
+      }
     }
+
+    public override bool Init()
+    {
+      return Load( GUIGraphicsContext.Skin + @"\Trakt.Settings.xml" );
+    }
+
+    #endregion
+  }
 }

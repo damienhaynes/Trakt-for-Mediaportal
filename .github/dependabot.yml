@@ -1,0 +1,15 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directories:
+      - "*"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "12:00"
+    labels:
+      - dependencies
+    commit-message:
+      prefix: "DEP"
+    open-pull-requests-limit: 10

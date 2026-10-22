@@ -21,12 +21,14 @@
   <string name="ActivityCheckedIn">{0} kollade in {1}</string>
   <string name="ActivityCollected">{0} samlade {1}</string>
   <string name="ActivityCollectedEpisodes">{0} samlade {1} avsnitt av {2}</string>
+  <string name="ActivityFavorited">{0} lade till  {1} till sina favoriter</string>
   <string name="ActivitySeen">{0} har sett {1}</string>
   <string name="ActivitySeenEpisodes">{0} sett {1} avsnitt av {2}</string>
   <string name="ActivityRating">{0} betygsatt {1}</string>
   <string name="ActivityRatingAdvanced">{0} betygsatt {1} [{2}/10]</string>
   <string name="ActivityWatchlist">{0} lade till {1} till sin WatchList</string>
-  <string name="ActivityYourWatchlist">{0} lade till {1} till WatchList</string>
+  <string name="ActivityYourFavorites">{0} lade till {1} till dina favoriter</string>
+  <string name="ActivityYourWatchlist">{0} lade till {1} till din Watchlist</string>
   <string name="ActivityAddToList">{0} lade till {1} till {2}</string>
   <string name="ActivityCreatedList">{0} skapade {1}</string>
   <string name="ActivityUpdatedList">{0} uppdaterade {1}</string>
@@ -45,6 +47,7 @@
   <string name="ActivityFilterActions">Filtrera på händelser...</string>
   <string name="ActivityFilterTypes">Filtrera på typer...</string>
   <string name="AddFriend">Lägg till vän...</string>
+  <string name="AddToFavorites">Lägg till bland Favoriter</string>
   <string name="AddToLibrary">Lägg till i samling</string>
   <string name="AddToList">Lägg till i lista...</string>
   <string name="AddToWatchList">Lägg till i Watchlist</string>
@@ -141,7 +144,7 @@ föjer dig?</string>
   <string name="CreateAccountWebsite">Tyvärr, den här funktionen finns inte\n längre. Gå till hemsidan\noch skapa ett konto.</string>
   <string name="Comment">Kommentar</string>
   <string name="Comments">Kommentarer</string>
-  <string name="CommentsThisWeek">Kommentarer denna veckan</string>
+  <string name="CommentsThisWeek">Kommentarer denna vecka</string>
   <string name="Community">Community</string>
   <string name="CommunityActivity">Community-aktivitet</string>
   <string name="Compositors">Kompositgrafiker</string>
@@ -158,6 +161,7 @@ detta objekt från den här listan?</string>
   <string name="Country">Land</string>
   <string name="CostumeAndMakeUp">Kläder och make-up</string>
   <string name="CurrentPage">Aktuell sida</string>
+  <string name="CurrentPeriod">Period: {0}</string>
   <string name="CustomLists">Egna listor</string>
   <string name="Crew">Besättning</string>
   <!--D-->
@@ -221,6 +225,8 @@ detta objekt från den här listan?</string>
   <string name="FailedLogin">Misslyckades med att logga in på Trakt.tv. Kontrollera ditt användarnamn och lösenord i inställningarna</string>
   <string name="FailedOnlineSettings">Failed to get online settings from trakt</string>
   <string name="FailedUpdateList">Misslyckades med att uppdatera listan online</string>
+  <string name="Favorited">Favoritmarkerad</string>
+  <string name="Favorites">Favoriter</string>
   <string name="FailedApplicationAuthorization">Misslyckas att auktorisera användare</string>
   <string name="FeatureNotAvailable">Tyvärr, den här funktionen är inte tillgänglig</string>
   <string name="Filters">Filter</string>
@@ -242,6 +248,12 @@ detta objekt från den här listan?</string>
   <string name="FollowPendingApproval">Begäran om att följa har sänts till {0} och väntar på godkännande</string>
   <string name="FriendRequestMessage">Du har {0} vänförfrågningar, lägg till eller neka från vän-sidan</string>
   <string name="FollowerRequestMessage">Du har {0} begärda följare, godkänn eller neka i nätverksfönstret</string>
+  <string name="FavoritedMovies">Favoritmarkerade filmer</string>
+  <string name="FavoritedShows">Favoritmarkerade Serier</string>
+  <string name="FavoriteMovies">Favoritmarkerade Filmer</string>
+  <string name="FavoriteShows">Favoritserier</string>
+  <string name="FavoriteSeasons">Favoritsäsonger</string>
+  <string name="FavoriteEpisodes">Favoritavsnitt</string>
   <string name="FullName">Fullständigt namn</string>
   <!--G-->
   <string name="Gaffer">Gaffare</string>
@@ -292,6 +304,7 @@ detta objekt från den här listan?</string>
   <string name="GettingBoxOffice">Tar emot Box Office</string>
   <string name="GettingCalendar">Tar emot kalender</string>
   <string name="GettingEpisodes">Hämtar avsnitt</string>
+  <string name="GettingFavorites">Hämtar Favoriter</string>
   <string name="GettingFriendsList">Tar emot vänlista</string>
   <string name="GettingFollowingList">Hämtar listan med personer som du följer</string>
   <string name="GettingFollowerList">Hämtar listan med personer som följer dig</string>
@@ -310,6 +323,8 @@ detta objekt från den här listan?</string>
   <string name="GettingShowSeasons">Hämtar seriesäsonger</string>
   <string name="GettingTrendingMovies">Tar emot filmer som växer i popularitet</string>
   <string name="GettingTrendingShows">Tar emot serier som växer i popularitet</string>
+  <string name="GettingFavoritedMovies">Hämtar Favoritmarkerade Filmer</string>
+  <string name="GettingFavoritedShows">Hämtar Favoritmarkerade Serier</string>
   <string name="GettingPopularMovies">Hämtar populära filmer</string>
   <string name="GettingPopularShows">Hämtar populära TV-program</string>
   <string name="GettingRecommendedMovies">Tar emot rekommenderade filmer</string>
@@ -343,6 +358,7 @@ detta objekt från den här listan?</string>
   <string name="HideComments">Dölj kommentarer</string>
   <string name="HideCollected">Göm samlade</string>
   <string name="HideEpisodes">Dölj avsnitt</string>
+  <string name="HideFavorited">Göm Favoritmarkerade</string>
   <string name="HideLiked">Dölj gillade</string>
   <string name="HideLists">Dölj listor</string>
   <string name="HideMovies">Dölj filmer</string>
@@ -355,6 +371,8 @@ detta objekt från den här listan?</string>
   <string name="HideUpdated">Dölj uppdaterade</string>
   <string name="HideWatched">Göm sedda</string>
   <string name="HideWatchlisted">Göm allt redan i WatchList</string>
+  <string name="HideNotWatched">Göm Ej Sedda</string>
+  <string name="HideNotCollected">Göm Otillgängliga i Samlingen</string>
   <string name="HideHiddenCalendarItems">Göm dolda kalenderobjekt</string>
   <string name="HideHiddenRecommendations">Göm gömda rekommendationer</string>
   <string name="HideHiddenCollectedProgress">Göm gömda framsteg för samling</string>
@@ -383,9 +401,9 @@ detta objekt från den här listan?</string>
   <string name="LibraryAndPlaybackSyncStarted">Manuell synkronisering av bibliotek och uppspelning har startat</string>
   <string name="LightingTechnician">Ljussättningstekniker</string>
   <string name="Like">Gilla</string>
-  <string name="LikedLists">Gillade listor</string>
+  <string name="LikedLists">Gillade Listor</string>
   <string name="Likes">Gillar</string>
-  <string name="LikesThisWeek">Gillat denna vecka</string>
+  <string name="LikesThisWeek">Gillamarkeringar denna vecka</string>
   <string name="LineProducer">Linjeproducent</string>
   <string name="List">Lista</string>
   <string name="Lists">Listor</string>
@@ -412,6 +430,8 @@ detta objekt från den här listan?</string>
   <string name="MovieCredits">Filminformation</string>
   <string name="MovieCount">{0} Filmer</string>
   <string name="MultiSelectDialog">Flervalsdialog</string>
+  <string name="MyFavoriteMovies">Favoritfilmer</string>
+  <string name="MyFavoriteShows">Favoritserier</string>
   <!--N-->
   <string name="Name">Namn</string>
   <string name="Network">Kanal/Producent</string>
@@ -437,11 +457,15 @@ detta objekt från den här listan?</string>
   <string name="NoFollowingTaunt">Du följer inte någon</string>
   <string name="NoTrendingMovies">Just nu tittar ingen på film!</string>
   <string name="NoTrendingShows">Just nu tittar ingen på TV-program!</string>
+  <string name="NoFavoritedMovies">Inga Favoritmarkerade Filmer hittades!</string>
+  <string name="NoFavoritedShows">Inga Favoritmarkerade Serier hittades!</string>
   <string name="NoMovieRecommendations">Hittade inga rekommenderade filmer</string>
   <string name="NoShowRecommendations">Hittade inga rekommenderade TV-program</string>
   <string name="NoShowWatchList">{0} saknar TV-program i sin Watch List!</string>
   <string name="NoMovieWatchList">{0} saknar filmer i sin Watch List!</string>
   <string name="NoEpisodeWatchList">{0} saknar avsnitt i sin Watch List!</string>
+  <string name="NoMovieFavorites">{0} har inga filmer bland sina Favoriter!</string>
+  <string name="NoShowFavorites">{0} har inga serier bland sina Favoriter!</string>
   <string name="NoSearchTypesSelected">Du måste först välja en eller flera söktyper innan du gör en internetsökning</string>
   <string name="NoShoutsForItem">{0} saknar shouts</string>
   <string name="NoPeopleToSearch">Det finns inga personer att söka efter.</string>
@@ -478,6 +502,11 @@ en lista nu?</string>
   <string name="PersonSummary">Person-sammanfattning</string>
   <string name="Percentage">Procent</string>
   <string name="Protected">Skyddad</string>
+  <string name="Period">Period</string>
+  <string name="PeriodDaily">Daglig</string>
+  <string name="PeriodWeekly">Veckovis</string>
+  <string name="PeriodMonthly">Månatlig</string>
+  <string name="PeriodAll">Alla</string>
   <string name="PersonWatching">1 person tittar</string>
   <string name="PeopleWatching">{0} personer tittar</string>
   <string name="Plays">Spelar</string>
@@ -515,6 +544,7 @@ en lista nu?</string>
   <string name="PropMaker">Kulissmakare</string>
   <string name="PropertyMaster">Markansvarig</string>
   <!--R-->
+  <string name="Rank">Betyg</string>
   <string name="Rate">Betygsätt</string>
   <string name="Rated">Betyg</string>
   <string name="Rating">Betyg</string>
@@ -536,6 +566,7 @@ en lista nu?</string>
   <string name="RecentWatchedEpisodes">Nyligen sedda avsnitt</string>
   <string name="RecentWatchedMovies">Nyligen sedda filmer</string>
   <string name="RecentAddedEpisodes">Nyligen tillagda avsnitt</string>
+  <string name="RemoveFromFavorites">Ta bort från Favoriter</string>
   <string name="RecentAddedMovies">Senaste filmerna</string>
   <string name="RecentComments">Senaste kommentarer</string>
   <string name="RecentShouts">Senaste shouts</string>
@@ -781,6 +812,7 @@ Om inställningen inte är aktiverad kommer i stället den första posten i list
   <string name="UserProfile">Användarprofil</string>
   <string name="UserRatingsDistribution">Betygsintervall 1 till 10 hjärtan</string>
   <string name="UserLoginSuccess">Användaren {0} har lyckats med auktorisering att använda trakt</string>
+  <string name="UserCount">Användareräkning</string>
   <!--V-->
   <string name="VideoAssistOperator">Videoassistentoperatör</string>
   <string name="VisualDevelopment">Visuell utveckling</string>
@@ -811,7 +843,8 @@ Om inställningen inte är aktiverad kommer i stället den första posten i list
   <string name="Writer">Manus</string>
   <string name="Writers">Manus</string>
   <string name="Writing">Manus</string>
-  <string name="WifiRemotePluginInCompatible">Din version av WifiRemote är i konflikt med denna version av Trakt\nRating-dialogen kan ej visas.</string>  <!--Y-->
+  <string name="WifiRemotePluginInCompatible">Din version av WifiRemote är i konflikt med denna version av Trakt\nRating-dialogen kan ej visas.</string>
+  <!--Y-->
   <string name="Year">År</string>
   <string name="Yes">Ja</string>
   <string name="Yesterday">Igår</string>

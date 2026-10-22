@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.Serialization;
+
+namespace TraktAPI.DataModels
+{
+  [DataContract]
+  public class TraktSyncMoviesCollected
+  {
+    [DataMember( Name = "movies" )]
+    public List<TraktSyncMovieCollected> Movies { get; set; }
+  }
+}

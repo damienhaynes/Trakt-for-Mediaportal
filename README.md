@@ -1,5 +1,11 @@
-Trakt for MediaPortal
-=====================
+# Trakt for MediaPortal
+
+[![MP AnyCPU](https://img.shields.io/badge/MP-AnyCPU-blue?logo=windows&logoColor=white)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/releases)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/build.yml?logo=github)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/actions)
+[![GitHub](https://img.shields.io/github/license/Mediaportal-Plugin-Team/Trakt-for-Mediaportal?color=blue)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/blob/master/LICENSE)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Mediaportal-Plugin-Team/Trakt-for-Mediaportal?include_prereleases)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/releases)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/downloads-pre/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/latest/total?label=release@downloads)](https://github.com/Mediaportal-Plugin-Team/Trakt-for-Mediaportal/releases)
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
 This project implements the Trakt API for Mediaportal.
 

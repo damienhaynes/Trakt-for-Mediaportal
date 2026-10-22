@@ -1,0 +1,66 @@
+name: Test / Trakt Plugin
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      - ready_for_review
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Trakt / Build
+    runs-on: windows-2022
+    steps:
+      - name: Setup Visual Studio 2022
+        uses: microsoft/setup-msbuild@v3
+        with:
+          vs-version: 16.11
+
+      - name: Git Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Git Checkout / MPE / XPath
+        uses: actions/checkout@v7
+        with:
+          repository: Mediaportal-Plugin-Team/Mediaportal-Tools
+          path: Tools
+
+      - name: Build
+        run: |
+          build.cmd < nul
+        working-directory: ${{ github.workspace }}\build
+        shell: cmd
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Upload Artifact / Plugin
+        uses: actions/upload-artifact@v7
+        if: ${{ success() }}
+        with:
+          name: TraktPlugin
+          path: |
+            ${{ github.workspace }}\TraktPlugin\bin\Release\TraktPlugin.dll
+          retention-days: 7
+          if-no-files-found: error
+
+  ci-status:
+    name: Build Status
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    if: always()
+    steps:
+      - name: Success
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Failure
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1

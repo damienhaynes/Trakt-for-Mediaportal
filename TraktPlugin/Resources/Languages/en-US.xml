@@ -21,12 +21,14 @@
   <string name="ActivityCheckedIn">{0} checked into {1}</string>
   <string name="ActivityCollected">{0} collected {1}</string>
   <string name="ActivityCollectedEpisodes">{0} collected {1} episodes of {2}</string>
+  <string name="ActivityFavorited">{0} added {1} to their favorites</string>
   <string name="ActivitySeen">{0} seen {1}</string>
   <string name="ActivitySeenEpisodes">{0} seen {1} episodes of {2}</string>
   <string name="ActivityRating">{0} rated {1}</string>
   <string name="ActivityRatingAdvanced">{0} rated {1} [{2}/10]</string>
   <string name="ActivityWatchlist">{0} added {1} to their watchlist</string>
-  <string name="ActivityYourWatchlist">{0} added {1} to watchlist</string>
+  <string name="ActivityYourFavorites">{0} added {1} to your favorites</string>
+  <string name="ActivityYourWatchlist">{0} added {1} to your watchlist</string>
   <string name="ActivityAddToList">{0} added {1} to {2}</string>
   <string name="ActivityCreatedList">{0} created {1}</string>
   <string name="ActivityUpdatedList">{0} updated {1}</string>
@@ -46,6 +48,7 @@
   <string name="ActivityFilterActions">Filter By Actions...</string>
   <string name="ActivityFilterTypes">Filter By Types...</string>
   <string name="AddFriend">Add Friend...</string>
+  <string name="AddToFavorites">Add to Favorites</string>
   <string name="AddToLibrary">Add to Collection</string>
   <string name="AddToList">Add to List...</string>
   <string name="AddToWatchList">Add to Watchlist</string>
@@ -155,6 +158,7 @@
   <string name="Country">Country</string>
   <string name="CostumeAndMakeUp">Costume and Make-up</string>
   <string name="CurrentPage">Current Page</string>
+  <string name="CurrentPeriod">Period: {0}</string>
   <string name="CustomLists">Custom Lists</string>
   <string name="Crew">Crew</string>
   <!--D-->
@@ -217,6 +221,8 @@
   <string name="FailedLogin">Failed to login to trakt.tv, check username and password in settings</string>
   <string name="FailedOnlineSettings">Failed to get online settings from trakt</string>
   <string name="FailedUpdateList">Failed to update list online</string>
+  <string name="Favorited">Favorited</string>
+  <string name="Favorites">Favorites</string>
   <string name="FailedApplicationAuthorization">Failed to authorize user for application</string>
   <string name="FeatureNotAvailable">Sorry, this feature is currently not available</string>
   <string name="Filters">Filters</string>
@@ -238,6 +244,12 @@
   <string name="FollowPendingApproval">Follow request has been sent to {0} and is pending approval</string>
   <string name="FriendRequestMessage">You have {0} friend requests, approve or deny from friends window</string>
   <string name="FollowerRequestMessage">You have {0} follower requests, approve or deny from network window</string>
+  <string name="FavoritedMovies">Favorited Movies</string>
+  <string name="FavoritedShows">Favorited Shows</string>
+  <string name="FavoriteMovies">Favorite Movies</string>
+  <string name="FavoriteShows">Favorite Shows</string>
+  <string name="FavoriteSeasons">Favorite Seasons</string>
+  <string name="FavoriteEpisodes">Favorite Episodes</string>
   <string name="FullName">Full Name</string>
   <!--G-->
   <string name="Gaffer">Gaffer</string>
@@ -288,6 +300,7 @@
   <string name="GettingBoxOffice">Getting Box Office</string>
   <string name="GettingCalendar">Getting Calendar</string>
   <string name="GettingEpisodes">Getting Episodes</string>
+  <string name="GettingFavorites">Getting Favorites</string>
   <string name="GettingFriendsList">Getting Friends List</string>
   <string name="GettingFollowingList">Getting Following List</string>
   <string name="GettingFollowerList">Getting Follower List</string>
@@ -306,6 +319,8 @@
   <string name="GettingShowSeasons">Getting Show Seasons</string>
   <string name="GettingTrendingMovies">Getting Trending Movies</string>
   <string name="GettingTrendingShows">Getting Trending Shows</string>
+  <string name="GettingFavoritedMovies">Getting Favorited Movies</string>
+  <string name="GettingFavoritedShows">Getting Favorited Shows</string>
   <string name="GettingPopularMovies">Getting Popular Movies</string>
   <string name="GettingPopularShows">Getting Popular Shows</string>
   <string name="GettingRecommendedMovies">Getting Recommended Movies</string>
@@ -339,6 +354,7 @@
   <string name="HideComments">Hide Comments</string>
   <string name="HideCollected">Hide Collected</string>
   <string name="HideEpisodes">Hide Episodes</string>
+  <string name="HideFavorited">Hide Favorited</string>
   <string name="HideLiked">Hide Liked</string>
   <string name="HideLists">Hide Lists</string>
   <string name="HideMovies">Hide Movies</string>
@@ -410,6 +426,8 @@
   <string name="MovieCredits">Movie Credits</string>
   <string name="MovieCount">{0} Movies</string>
   <string name="MultiSelectDialog">Multi-Select Dialog</string>
+  <string name="MyFavoriteMovies">Favorite Movies</string>
+  <string name="MyFavoriteShows">Favorite Shows</string>
   <!--N-->
   <string name="Name">Name</string>
   <string name="Network">Network</string>
@@ -435,11 +453,15 @@
   <string name="NoFollowingTaunt">You are not following anyone!</string>
   <string name="NoTrendingMovies">No movies currently being watched!</string>
   <string name="NoTrendingShows">No shows currently being watched!</string>
+  <string name="NoFavoritedMovies">No Favorited Movies Found!</string>
+  <string name="NoFavoritedShows">No Favorited Shows Found!</string>
   <string name="NoMovieRecommendations">No movie recommendations found!</string>
   <string name="NoShowRecommendations">No show recommendations found!</string>
   <string name="NoShowWatchList">{0} has no shows in watchlist!</string>
   <string name="NoMovieWatchList">{0} has no movies in watchlist!</string>
   <string name="NoEpisodeWatchList">{0} has no episodes in watchlist!</string>
+  <string name="NoMovieFavorites">{0} has no movies in Favorites!</string>
+  <string name="NoShowFavorites">{0} has no shows in Favorites!</string>
   <string name="NoSearchTypesSelected">You must first select one or more search types\nbefore performing an online search.</string>
   <string name="NoShoutsForItem">No shouts for {0}!</string>
   <string name="NoPeopleToSearch">There are no people to search by.</string>
@@ -472,6 +494,11 @@
   <string name="PersonSummary">Person Summary</string>
   <string name="Percentage">Percentage</string>
   <string name="Protected">Protected</string>
+  <string name="Period">Period</string>
+  <string name="PeriodDaily">Daily</string>
+  <string name="PeriodWeekly">Weekly</string>
+  <string name="PeriodMonthly">Monthly</string>
+  <string name="PeriodAll">All</string>
   <string name="PersonWatching">1 Person Watching</string>
   <string name="PeopleWatching">{0} People Watching</string>
   <string name="Plays">Plays</string>
@@ -531,6 +558,7 @@
   <string name="RecentWatchedEpisodes">Recently Watched Episodes</string>
   <string name="RecentWatchedMovies">Recently Watched Movies</string>
   <string name="RecentAddedEpisodes">Recently Added Episodes</string>
+  <string name="RemoveFromFavorites">Remove from Favorites</string>
   <string name="RecentAddedMovies">Recently Added Movies</string>
   <string name="RecentComments">Recent Comments</string>
   <string name="RecentShouts">Recent Shouts</string>
@@ -771,6 +799,7 @@
   <string name="UserProfile">User Profile</string>
   <string name="UserRatingsDistribution">Ratings distribution 1 to 10 hearts</string>
   <string name="UserLoginSuccess">User {0} successfully authorized to use trakt account</string>
+  <string name="UserCount">User Count</string>
   <!--V-->
   <string name="VideoAssistOperator">Video Assist Operator</string>
   <string name="VisualDevelopment">Visual Development</string>

@@ -205,7 +205,7 @@
       <label>#Trakt.Translation.Genre.Label</label>
       <posX>565</posX>
       <posY>487</posY>
-      <visible>facadeview.list+!string.equals(#Trakt.Show.Title,)+[!window.istopmost(87265)+!window.istopmost(87602)+!window.istopmost(87606)]</visible>
+      <visible>facadeview.list+!string.equals(#Trakt.Show.Title,)+[!window.istopmost(87265)+!window.istopmost(87602)+![window.istopmost(87606) | window.istopmost(87704)]]</visible>
       <animation effect="fade" time="250">WindowOpen</animation>
       <animation effect="fade" time="250">WindowClose</animation>
     </control>
@@ -217,7 +217,7 @@
       <label>#Trakt.Show.Genres</label>
       <posX>798</posX>
       <posY>487</posY>
-      <visible>facadeview.list+!string.equals(#Trakt.Show.Title,)+[!window.istopmost(87265)+!window.istopmost(87602)+!window.istopmost(87606)]</visible>
+      <visible>facadeview.list+!string.equals(#Trakt.Show.Title,)+[!window.istopmost(87265)+!window.istopmost(87602)+![window.istopmost(87606) | window.istopmost(87704)]]</visible>
       <animation effect="fade" time="250">WindowOpen</animation>
       <animation effect="fade" time="250">WindowClose</animation>
     </control>
@@ -243,6 +243,30 @@
       <animation effect="fade" time="250">WindowOpen</animation>
       <animation effect="fade" time="250">WindowClose</animation>
     </control>
+    
+    <control Style="InfoLabel">
+      <description>UserCount Label (Favorited)</description>
+      <id>0</id>
+      <type>label</type>
+      <label>#Trakt.Translation.UserCount.Label</label>
+      <posX>565</posX>
+      <posY>487</posY>
+      <visible>facadeview.list+!string.equals(#Trakt.Show.UserCount,)+window.istopmost(87704)</visible>
+      <animation effect="fade" time="250">WindowOpen</animation>
+      <animation effect="fade" time="250">WindowClose</animation>
+    </control>
+    <control Style="InfoValueSmall">
+      <description>UserCount (Favorited)</description>
+      <id>0</id>
+      <type>label</type>
+      <label>#Trakt.Show.UserCount</label>
+      <posX>798</posX>
+      <posY>487</posY>
+      <visible>facadeview.list+!string.equals(#Trakt.Show.UserCount,)+window.istopmost(87704)</visible>
+      <animation effect="fade" time="250">WindowOpen</animation>
+      <animation effect="fade" time="250">WindowClose</animation>
+    </control>
+    
     <control Style="InfoLabel">
       <description>Lists Label</description>
       <id>0</id>

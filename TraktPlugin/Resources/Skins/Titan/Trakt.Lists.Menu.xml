@@ -53,7 +53,7 @@
         <hyperlink>87270</hyperlink>
         <onleft>#defaultcontrol.onleft</onleft>
         <onright>#defaultcontrol.onright</onright>
-        <onup>8</onup>
+        <onup>10</onup>
       </control>
       <control Style="SettingsButtonLarge">
         <type>button</type>
@@ -74,41 +74,59 @@
         <onright>#defaultcontrol.onright</onright>
       </control>
       <control Style="SettingsButtonLarge">
-        <description>Custom Lists</description>
+        <description>Favorite Movies</description>
         <type>button</type>
         <id>5</id>
+        <label>#Trakt.Translation.FavoriteMovies.Label</label>
+        <hyperlink>87701</hyperlink>
+        <onleft>#defaultcontrol.onleft</onleft>
+        <onright>#defaultcontrol.onright</onright>
+      </control>
+      <control Style="SettingsButtonLarge">
+        <description>Favorite Shows</description>
+        <type>button</type>
+        <id>6</id>
+        <label>#Trakt.Translation.FavoriteShows.Label</label>
+        <hyperlink>87702</hyperlink>
+        <onleft>#defaultcontrol.onleft</onleft>
+        <onright>#defaultcontrol.onright</onright>
+      </control>
+      <control Style="SettingsButtonLarge">
+        <description>Custom Lists</description>
+        <type>button</type>
+        <id>7</id>
         <label>#Trakt.Translation.CustomLists.Label</label>
         <hyperlink>87275</hyperlink>
         <onleft>#defaultcontrol.onleft</onleft>
         <onright>#defaultcontrol.onright</onright>
       </control>
-	  <control Style="SettingsButtonLarge">
+      <control Style="SettingsButtonLarge">
         <description>Trending Lists</description>
         <type>button</type>
-        <id>6</id>
+        <id>8</id>
         <label>#Trakt.Translation.TrendingLists.Label</label>
         <hyperlink>87275</hyperlink>
-		<hyperlinkParameter>trending</hyperlinkParameter>
+        <hyperlinkParameter>trending</hyperlinkParameter>
         <onleft>#defaultcontrol.onleft</onleft>
         <onright>#defaultcontrol.onright</onright>
       </control>
-	  <control Style="SettingsButtonLarge">
+      <control Style="SettingsButtonLarge">
         <description>Popular Lists</description>
         <type>button</type>
-        <id>7</id>
+        <id>9</id>
         <label>#Trakt.Translation.PopularLists.Label</label>
         <hyperlink>87275</hyperlink>
-		<hyperlinkParameter>popular</hyperlinkParameter>
+        <hyperlinkParameter>popular</hyperlinkParameter>
         <onleft>#defaultcontrol.onleft</onleft>
         <onright>#defaultcontrol.onright</onright>
       </control>
-	  <control Style="SettingsButtonLarge">
+      <control Style="SettingsButtonLarge">
         <description>Liked Lists</description>
         <type>button</type>
-        <id>8</id>
+        <id>10</id>
         <label>#Trakt.Translation.LikedLists.Label</label>
         <hyperlink>87275</hyperlink>
-		<hyperlinkParameter>liked</hyperlinkParameter>
+        <hyperlinkParameter>liked</hyperlinkParameter>
         <onleft>#defaultcontrol.onleft</onleft>
         <onright>#defaultcontrol.onright</onright>
         <ondown>2</ondown>

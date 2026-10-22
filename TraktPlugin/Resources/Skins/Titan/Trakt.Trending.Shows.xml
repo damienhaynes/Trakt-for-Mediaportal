@@ -421,8 +421,7 @@
           <textYOff>16</textYOff>
           <label>-</label>
           <onright>50</onright>
-          <ondown>8</ondown>
-          <onup>8</onup>
+          <onup>13</onup>
         </control>
 
         <control>
@@ -440,8 +439,6 @@
           <offsetSortButtonY>27</offsetSortButtonY>
           <onright>50</onright>
           <onleft>50</onleft>
-          <ondown>9</ondown>
-          <onup>2</onup>
         </control>
 
         <control>
@@ -454,8 +451,6 @@
           <textureNoFocus>-</textureNoFocus>
           <label>#Trakt.Translation.HideWatched.Label</label>
           <textcolorNoFocus>ff393939</textcolorNoFocus>
-          <onup>8</onup>
-          <ondown>10</ondown>
           <onright>50</onright>
           <onleft>50</onleft>
           <textXOff>62</textXOff>
@@ -472,8 +467,6 @@
           <textureNoFocus>-</textureNoFocus>
           <label>#Trakt.Translation.HideWatchlisted.Label</label>
           <textcolorNoFocus>ff393939</textcolorNoFocus>
-          <onup>9</onup>
-          <ondown>11</ondown>
           <onright>50</onright>
           <onleft>50</onleft>
           <textXOff>62</textXOff>
@@ -490,8 +483,6 @@
           <textureNoFocus>-</textureNoFocus>
           <label>#Trakt.Translation.HideCollected.Label</label>
           <textcolorNoFocus>ff393939</textcolorNoFocus>
-          <onup>10</onup>
-          <ondown>12</ondown>
           <onright>50</onright>
           <onleft>50</onleft>
           <textXOff>62</textXOff>
@@ -508,7 +499,22 @@
           <textureNoFocus>-</textureNoFocus>
           <textcolorNoFocus>ff393939</textcolorNoFocus>
           <label>#Trakt.Translation.HideRated.Label</label>
-          <onup>11</onup>
+          <onright>50</onright>
+          <onleft>50</onleft>
+          <textXOff>62</textXOff>
+          <textYOff>16</textYOff>
+        </control>
+
+        <control>
+          <description>Hide Favorited</description>
+          <type>checkbutton</type>
+          <id>13</id>
+          <width>499</width>
+          <height>69</height>
+          <textureFocus>hiddenmenu_item_selected.png</textureFocus>
+          <textureNoFocus>-</textureNoFocus>
+          <textcolorNoFocus>ff393939</textcolorNoFocus>
+          <label>#Trakt.Translation.HideFavorited.Label</label>
           <ondown>2</ondown>
           <onright>50</onright>
           <onleft>50</onleft>
